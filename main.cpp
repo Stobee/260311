@@ -5,9 +5,14 @@ using namespace std;
 
 
 
-void ShowFlexArray(int Num) {
+int ShowFlexArray(int Num) {
 	
-	int* NumArray = new int[Num];
+	int* NumArray = nullptr; // 변수 채우기 전에 초기화와 비슷
+	NumArray = new int[Num];
+	if (!NumArray) // (NumArray == nullptr)
+	{
+		return -1;
+	}
 
 	for (int i = 0; i < Num; i++)
 	{
@@ -15,31 +20,43 @@ void ShowFlexArray(int Num) {
 		cout << NumArray[i] << " ";
 	}
 	delete[] NumArray;
-				
+	
+	return 0;	
 }
 
 int main()
 {
-	// 숫자를 입력 받아서 그걸 크기로 숫자 배열을 만듬
-	// 1부터 크기까지 초기화 하고 출력하는 프로그램
+	int Basket = 0;
+	int ChangeTime = 0;
+	int FirstBasket = 0;
+	int LastBasket = 0;
+	
+	cin >> Basket >> ChangeTime;
 
-	while (true)
-	{	
-		int Num = 0;
-		cin >> Num;
-		if (Num < 1000)
-		{
-			ShowFlexArray(Num);
-			break;
-		}
-		else
-		{
-			cout << "1000보다 작은 수를 입력해주세요" << endl;
-		}
+	int* Baskets = new int[Basket];
+	int* TempBaskets = new int[Basket];
+
+	for (int i = 0; i < Basket; i++)
+	{
+		Baskets[i] = i + 1;
+		TempBaskets[i] = i + 1;
 	}
 
+	for (int i = 0; i < ChangeTime; i++)
+	{
+		cin >> FirstBasket >> LastBasket;
+
+		for (int j = LastBasket; j < FirstBasket; j--) {
+			int k = FirstBasket;
+			k++;
+			Baskets[j] = TempBaskets[k];
+		}
+
+
+	}
 	
-	
+	delete[] Baskets;
+	delete[] TempBaskets;
 
 	return 0;
 }
