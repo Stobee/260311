@@ -36,29 +36,38 @@ void CharChangeInArray(char* Array, char Target, char NewChar) { // 특정 문자 변
 		P++;
 	}
 }
+
+int GetCharArrayLenth(char* Array) {
+	
+	int Count = 0;
+
+	while (true)
+	{
+		char Text = *(Array + Count);
+		if (Text == '\0')
+		{
+
+			break;
+		}
+		Count++;
+	}
+
+	return Count;
+
+}
+
 int main()
 {
 
 	char TextArray[6] = { 'A', 'P', 'P', 'L', 'E','\0' };
 	int Count = 0; // 문자열 개수
-	while (true) 
-	{
-		char Text = *(TextArray + Count);
-		if (Text == '\0')
-		{
-			
-			break;
-		}
-		Count++;
-	}
-	cout <<"총" << Count << "개" << endl;
 	
+	Count = GetCharArrayLenth(TextArray);
+	
+	cout <<"총 " << Count << " 개" << endl;
 	CharChangeInArray(TextArray, 'P', 'B');
 	WhereIsCharInArray(TextArray,'L');
 
-
-	
-	
 
 	return 0;
 }
