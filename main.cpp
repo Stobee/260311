@@ -30,7 +30,7 @@ void CharChangeInArray(char* Array, char Target, char NewChar) { // 특정 문자 변
 		if (*P == Target)
 		{
 			*P = NewChar;
-			cout << Target << "은/는" << *P << "로 변경되었다." << endl;
+			cout << Target << " 은/는" << *P << " 로 변경되었다." << endl;
 			break;
 		}
 		P++;
