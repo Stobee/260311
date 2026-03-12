@@ -47,3 +47,22 @@ int WhereIsCharInArray(char* Array, char Target, int Size)
 	}
 	return -1;
 }
+
+int ShowFlexArray(int Num) {
+
+	int* NumArray = nullptr; // 변수 채우기 전에 초기화와 비슷
+	NumArray = new int[Num];
+	if (!NumArray) // (NumArray == nullptr)
+	{
+		return -1;
+	}
+
+	for (int i = 0; i < Num; i++)
+	{
+		NumArray[i] = i + 1;
+		cout << NumArray[i] << " ";
+	}
+	delete[] NumArray;
+
+	return 0;
+}

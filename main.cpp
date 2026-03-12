@@ -1,28 +1,10 @@
 #include <iostream>
-#include "StringUtill.h"
+
 
 using namespace std;
 
 
 
-int ShowFlexArray(int Num) {
-	
-	int* NumArray = nullptr; // 변수 채우기 전에 초기화와 비슷
-	NumArray = new int[Num];
-	if (!NumArray) // (NumArray == nullptr)
-	{
-		return -1;
-	}
-
-	for (int i = 0; i < Num; i++)
-	{
-		NumArray[i] = i + 1;
-		cout << NumArray[i] << " ";
-	}
-	delete[] NumArray;
-	
-	return 0;	
-}
 
 int main()
 {
@@ -34,29 +16,36 @@ int main()
 	cin >> Basket >> ChangeTime;
 
 	int* Baskets = new int[Basket];
-	int* TempBaskets = new int[Basket];
+	int BastketCount = 0;
 
 	for (int i = 0; i < Basket; i++)
 	{
 		Baskets[i] = i + 1;
-		TempBaskets[i] = i + 1;
 	}
 
 	for (int i = 0; i < ChangeTime; i++)
 	{
 		cin >> FirstBasket >> LastBasket;
 
-		for (int j = LastBasket; j < FirstBasket; j--) {
-			int k = FirstBasket;
-			k++;
-			Baskets[j] = TempBaskets[k];
+		for (int j = FirstBasket - 1; j < LastBasket - 1 ; j++) {
+			int Temp = 0;
+			BastketCount = LastBasket - 1;
+
+			Temp = Baskets[j]; 
+			Baskets[j] = Baskets[BastketCount];
+			Baskets[BastketCount] = Temp;
+			BastketCount--;
 		}
 
 
 	}
+	for (int i = 0; i < Basket; i++)
+	{
+		cout << Baskets[i] << " ";
+	}
 	
 	delete[] Baskets;
-	delete[] TempBaskets;
+	
 
 	return 0;
 }
